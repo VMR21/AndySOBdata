@@ -95,7 +95,7 @@ app.get("/leaderboard", (req, res) => {
 });
 
 app.get("/leaderboard/top14", (req, res) => {
-  const n = Number(req.query.n || 14);
+  const n = Number(req.query.n || 10);
   const top = leaderboardCache.slice(0, n);
   if (top.length >= 2) [top[0], top[1]] = [top[1], top[0]];
   res.json(top);
@@ -106,7 +106,7 @@ app.get("/leaderboard/prev", (req, res) => {
 });
 
 app.get("/leaderboard/prev/top14", (req, res) => {
-  const n = Number(req.query.n || 14);
+  const n = Number(req.query.n || 10);
   const top = prevLeaderboardCache.slice(0, n);
   if (top.length >= 2) [top[0], top[1]] = [top[1], top[0]];
   res.json(top);
